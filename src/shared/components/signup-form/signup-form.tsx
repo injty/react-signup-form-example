@@ -1,15 +1,17 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { createPortal } from "react-dom";
 import { FormProvider, useForm } from "react-hook-form";
 
+import { SignupFormButtons } from "./signup-form-buttons";
 import { SignupFormContent } from "./signup-form-content";
+import { SignupFormToast } from "./signup-form-toast";
 
 import { useSignupFormStore } from "../../../store/signup-form-store";
 import { SignupFormInitialValues, SignupFormInputNames } from "../../../utils/constants";
 import { SignupFormSchema, SignupFormSchemaType } from "../../../utils/schemas/signup-form-schema";
-import { SignupFormButtons } from "./signup-form-buttons";
 
 export const SignupForm = () => {
-  const { step, username } = useSignupFormStore();
+  const { step, username, setSignupToastStatus } = useSignupFormStore();
   const inputName = SignupFormInputNames[step];
 
   const form = useForm<SignupFormSchemaType>({
@@ -19,6 +21,7 @@ export const SignupForm = () => {
 
   const submit = (data: SignupFormSchemaType) => {
     console.log(data);
+    setSignupToastStatus(true);
   };
 
   return (
@@ -31,6 +34,7 @@ export const SignupForm = () => {
             <SignupFormButtons inputName={inputName} form={form} />
           </div>
         </form>
+        {createPortal(<SignupFormToast />, document.body)}
       </FormProvider>
     </div>
   );
