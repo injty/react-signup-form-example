@@ -6,10 +6,11 @@ export type SignupFormStoreType = {
   password: string;
   email: string;
   signupToastStatus: boolean;
+  signupStatus: boolean;
   updateUsername: (username: string) => void;
   updateStep: (step: number) => void;
+  setSignupStatus: VoidFunction;
   setSignupToastStatus: (status: boolean) => void;
-  resetSignupToastStatus: VoidFunction;
 };
 
 export const useSignupFormStore = create<SignupFormStoreType>((set) => ({
@@ -18,6 +19,7 @@ export const useSignupFormStore = create<SignupFormStoreType>((set) => ({
   password: "",
   email: "",
   signupToastStatus: false,
+  signupStatus: false,
   updateUsername: (username: string) => {
     set({ username: username });
   },
@@ -26,10 +28,10 @@ export const useSignupFormStore = create<SignupFormStoreType>((set) => ({
       set({ step: step });
     }
   },
-  setSignupToastStatus: async () => {
-    set({ signupToastStatus: true });
+  setSignupStatus: () => {
+    set({ signupStatus: true });
   },
-  resetSignupToastStatus: () => {
-    set({ signupToastStatus: false });
+  setSignupToastStatus: (status) => {
+    set({ signupToastStatus: status });
   },
 }));

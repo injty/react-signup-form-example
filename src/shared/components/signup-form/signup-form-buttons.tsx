@@ -33,7 +33,7 @@ export const SignupFormButtons: FC<SignupFormButtonsProps> = ({ inputName, form 
       {step > 0 && (
         <button
           onClick={getPreviousStep}
-          className="group mt-4 flex w-full items-center justify-center gap-3 rounded-md bg-[#d79921] px-2 py-2 text-[#202020] shadow-sm"
+          className="group mt-4 flex w-full items-center justify-center gap-3 rounded-md bg-[#d79921] px-2 py-2 text-[#202020] shadow-sm hover:opacity-80"
           type="button"
         >
           <ArrowLeft size={16} color="#202020" className="transition-all group-hover:-translate-x-1" />
@@ -44,7 +44,7 @@ export const SignupFormButtons: FC<SignupFormButtonsProps> = ({ inputName, form 
       {step < 2 && (
         <button
           onClick={getNextStep}
-          className="group mt-4 flex w-full items-center justify-center gap-3 rounded-md bg-[#d79921] px-2 py-2 text-[#202020] shadow-sm"
+          className="group mt-4 flex w-full items-center justify-center gap-3 rounded-md bg-[#d79921] px-2 py-2 text-[#202020] shadow-sm hover:opacity-80"
           type="button"
         >
           Next
@@ -53,7 +53,10 @@ export const SignupFormButtons: FC<SignupFormButtonsProps> = ({ inputName, form 
       )}
 
       {step === 2 && (
-        <button className="t group mt-4 flex w-full items-center justify-center gap-3 rounded-md bg-[#d79921] px-2 py-2 text-[#202020] shadow-sm" type="submit">
+        <button
+          className="t group mt-4 flex w-full items-center justify-center gap-3 rounded-md bg-[#d79921] px-2 py-2 text-[#202020] shadow-sm hover:opacity-80"
+          type="submit"
+        >
           Send
           <ArrowRight size={16} color="#202020" className="transition-all group-hover:translate-x-1" />
         </button>

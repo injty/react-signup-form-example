@@ -21,7 +21,7 @@ export const SignupFormInput: FC<SignupFormInputProps> = ({ className, inputName
   return (
     <div className="flex flex-col gap-2">
       <input
-        className={cn("rounded-md bg-[#292929] px-2 py-2 text-[#EBDBB2] shadow-sm", className ? className : "")}
+        className={cn("rounded-md bg-[#292929] px-3 py-2 text-[#EBDBB2] shadow-sm", className ? className : "")}
         {...register(inputName)}
         placeholder={inputName}
         value={value}

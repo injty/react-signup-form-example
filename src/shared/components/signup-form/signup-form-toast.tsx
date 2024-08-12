@@ -4,14 +4,14 @@ import { useSignupFormStore } from "../../../store/signup-form-store";
 import { cn } from "../../../utils";
 
 export const SignupFormToast: FC = () => {
-  const { username } = useSignupFormStore();
-  const { signupToastStatus, resetSignupToastStatus } = useSignupFormStore();
+  const { signupToastStatus, setSignupToastStatus } = useSignupFormStore();
 
   useEffect(() => {
-    setTimeout(() => {
-      if (signupToastStatus) resetSignupToastStatus();
+    const timer = setTimeout(() => {
+      if (signupToastStatus) setSignupToastStatus(false);
     }, 3000);
-  }, [signupToastStatus, resetSignupToastStatus]);
+    return () => clearTimeout(timer);
+  }, [signupToastStatus, setSignupToastStatus]);
 
   return (
     <div
@@ -20,7 +20,7 @@ export const SignupFormToast: FC = () => {
         signupToastStatus ? "top-16" : "-top-1/2",
       )}
     >
-      <div>Thanks, {username}! 🎉</div>
+      <div>Successful registration! 🎉</div>
     </div>
   );
 };
